@@ -1,0 +1,11 @@
+2017/12/10
+
+1.	Created repository on git "gvrocha_tennis"
+	a)		Made it public
+	b)	Private repos cost $7/month for unlimited number of repos
+	
+2.	Cloned locally 
+	a)	mkdir -p Users/gvrocha/Dropbox/git
+	b)	cd Users/gvrocha/Dropbox/git
+	c)	git clone https://github.com/gvrocha/gvrocha_tennis.git
+
