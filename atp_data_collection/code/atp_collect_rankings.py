@@ -137,6 +137,11 @@ if keep_log:
 else:
 	print("No log being kept.")
 
+list_filename = "%s/%s_collected_rankings_list.txt" % (output_dir, mode);
+list_file     = open(list_filename, "a")
+if verbose:
+	print("list_filename: %s" % (list_filename))
+
 start_date = start_date.replace(hour =  0, minute =  0, second =  0, microsecond=0)
 final_date = final_date.replace(hour = 23, minute = 59, second = 59, microsecond=999999)
 
@@ -213,12 +218,15 @@ for this_date in date_list:
 			outfile.write(data_string)
 			outfile.flush();
 			outfile.close();
+			list_file.write("%s\t%s\t%s\n"% (mode, this_date.strftime('%Y.%m.%d'), outfilename))
 
 #---
 if keep_log:
 	if verbose:
 		print("Closing log file.")
 	logfile.close()
+
+list_file.close()
 
 sys.exit()
 
