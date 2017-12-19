@@ -219,6 +219,7 @@ for this_date in date_list:
 			outfile.flush();
 			outfile.close();
 			list_file.write("%s\t%s\t%s\n"% (mode, this_date.strftime('%Y.%m.%d'), outfilename))
+			list_file.flush()
 
 #---
 if keep_log:

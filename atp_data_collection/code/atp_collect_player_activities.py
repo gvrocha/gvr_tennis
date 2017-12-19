@@ -13,6 +13,7 @@ import re
 import pandas as pd
 import subprocess
 import time
+import argparse
 
 missing_string           = ""
 
@@ -23,16 +24,16 @@ if(is_interactive):
 	infile    = "/Users/gvrocha/Documents/projects/atp_data_collection/data/player_activity/doubles_collection_list.txt"
 	exec_file = "/Users/gvrocha/Documents/projects/atp_data_collection/code/atp_get_player_activity.py"
 else:
-	this_dir  = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
-	if(len(sys.argv)>1):
-		infile = sys.argv[1];
-	else:
-		infile    = this_dir+"/../data/player_activity/doubles_collection_list.txt"
-
-	if(len(sys.argv)>2):
-		exec_file = sys.argv[2];
-	else:
-		exec_file = this_dir+"/atp_get_player_activity.py"
+	this_dir          = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
+	default_exec_file = "%s/atp_get_player_activity.py" % (this_dir)
+	
+	parser = argparse.ArgumentParser(description='This script manages collection of a list of player activities.')
+	parser.add_argument('infile',      type = str, help = "A file contaning list of players activities to download")
+	parser.add_argument('--exec_file', type = str, help = "Script to be used to download player activities", default = default_exec_file)
+	
+	args      = parser.parse_args()
+	infile    = args.infile
+	exec_file = args.exec_file
 
 indir           = os.path.dirname(infile)
 infile_basename = os.path.basename(infile)
@@ -54,7 +55,7 @@ ping_time = 0.5
 processed_list_file = open(processed_name, "a")
 failed_list_file    = open(failed_name, "a")
 progress_list_file  = open(progress_name, "a")
-this_activity = activity_list[0]
+#this_activity       = activity_list[0]
 for this_activity in activity_list:
 	this_activity = this_activity.strip()
 	this_command  = "python %s %s" % (exec_file, this_activity.strip())
