@@ -1,0 +1,12 @@
+[submodule "tennis_atp"]
+	path = tennis_atp
+	url = https://github.com/JeffSackmann/tennis_atp.git
+[submodule "tennis_wta"]
+	path = tennis_wta
+	url = https://github.com/JeffSackmann/tennis_wta.git
+[submodule "tennis_pointbypoint"]
+	path = tennis_pointbypoint
+	url = https://github.com/JeffSackmann/tennis_pointbypoint.git
+[submodule "tennis_slam_pointbypoint"]
+	path = tennis_slam_pointbypoint
+	url = https://github.com/JeffSackmann/tennis_slam_pointbypoint.git
